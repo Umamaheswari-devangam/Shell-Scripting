@@ -25,4 +25,44 @@ echo "4.Read-only Variable (Constant)"
 readonly pi=3.14
 echo -e $pi "\n"
 
-echo "Arithmetic Variables"
+echo "2.Arithmetic Variables"
+a=10
+b=20
+total=$((a+b))
+echo $total
+
+echo "Script name: $0" 
+echo "First arg: $1"
+echo "Second arg: $2"
+echo "All args quoted individually: $@"
+echo "All args as one string: $*" 
+echo "Arg count: $#"
+echo "PID of current shell: $$"
+echo "Exit status of last command: $?"
+echo "PID of last background process: $!"
+
+echo "3.Arrays"
+
+echo "Indexed Array: Numeric (0,1,2...)"
+fruits=("apple" "banana" "cherry")
+echo ${fruits[0]}
+echo ${fruits[@]}
+
+echo "Associative Array: Named keys (name, id, etc.)"
+declare -A person
+person[name]="uma"
+person[age]=20
+person[city]="Hyd"
+echo ${person[city]}
+
+echo "Scope of variables:"
+myFunc() {
+  local name="Local variables are declared using local keyword within a function"
+  echo $name
+}
+
+echo "Unsetting var: Deleting var"
+z="unset"
+echo $z
+unset z
+
